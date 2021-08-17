@@ -1,0 +1,93 @@
+  351  cd /var/lib/containers/storage/overlay
+  352  ls
+  353  ls l
+  354  podman pull quay.io/kushalsamota/centos
+  355  ls
+  356  podman run -itd --name centos centos
+  357  ls
+  358  podman exec -it centos bash 
+  359  ls
+  360  cd 8b9d6dd2885848ce945e3ad2cfc8200b44a6be51ab0765a0c14c5a0586745a94/
+  361  ls
+  362  cd diff/
+  363  ls
+  364  cd ..
+  365  podman rm -f centos 
+  366  ls
+  367  CD
+  368  cd
+  369  mkdir /mysqldata
+  370  podman run -d -e MYSQL_ROOT_PASSWORD=redhat -v /mysqldata:/var/lib/mysql --name mysql mysql
+  371  podman run -d -e MYSQL_ROOT_PASSWORD=redhat -v /mysqldata:/var/lib/mysql --name mysql quay.io/kushalsamota/mysql
+  372  podman ps
+  373  podman ps -a
+  374  podman rm -f mysql 
+  375  podman run -d -e MYSQL_ROOT_PASSWORD=redhat -v /mysqldata:/var/lib/mysql:Z --name mysql quay.io/kushalsamota/mysql
+  376  podman ps
+  377  ls /mysqldata/
+  378  podman exec -it mysql bash
+  379  ls /mysqldata/
+  380  podman rm -f mysql 
+  381  ls /mysqldata/
+  382  podman run -d -e MYSQL_ROOT_PASSWORD=redhat -v /mysqldata:/var/lib/mysql:Z --name mysql quay.io/kushalsamota/mysql
+  383  podman ps
+  384  podman exec -it mysql bash
+  385  podman rm -f mysql 
+  386  mkdir /apache
+  387  rm -rf /apache/
+  388  mkdir /conf
+  389  ls /conf/
+  390  podman run -d --name apache -v /conf:/usr/local/apache2/conf:Z quay.io/kushalsamota/httpd
+  391  podman ps
+  392  podman ps -a
+  393  podman rm -f apache 
+  394  podman run -d --name apache httpd
+  395  ls /conf/
+  396  podman ps
+  397  podman cp apache:/usr/local/apache2/conf .
+  398  ls
+  399  mv conf/* /conf/
+  400  ls /conf/
+  401  podman rm -f apache 
+  402  podman run -d --name apache -v /conf:/usr/local/apache2/conf:Z quay.io/kushalsamota/httpd
+  403  podman ps
+  404  ls /conf/
+  405  podman rm -f apache 
+  406  mkdir /websitedata
+  407  touch /websitedata/index.html
+  408  echo "<h1> Hello Everyone </h1>" > /websitedata/index.html 
+  409  cat /websitedata/index.html 
+  410  ls /websitedata/
+  411  podman run -d --name apache -v /websitedata:/usr/local/apache2/htdocs httpd
+  412  podman ps
+  413  podman p
+  414  podman ps
+  415  podman exec -it apache bash
+  416  podman rm -f apache 
+  417  podman run -d --name apache -v /websitedata:/usr/local/apache2/htdocs:Z httpd
+  418  podman p
+  419  podman ps
+  420  podman exec -it apache bash
+  421  podman rm -f apache 
+  422  podman run -d --name apache -v /websitedata:/usr/local/apache2/htdocs:ro:Z httpd
+  423  podman run -d --name apache -v /websitedata:/usr/local/apache2/htdocs:Z:ro httpd
+  424  podman run -d --name apache -v /websitedata:/usr/local/apache2/htdocs:Zro httpd
+  425  podman run -d --name apache -v /websitedata:/usr/local/apache2/htdocs:Z,ro httpd
+  426  podman ps
+  427  podman exec -it apache bash
+  428  podman rm -f apache 
+  429  getenforce
+  430  chown -R student:student /mysqldata/
+  431  ls /mysqldata/
+  432  ll /mysqldata/
+  433  chmod-R  000 /mysqldata/
+  434  chmod -R  000 /mysqldata/
+  435  ll /mysqldata/
+  436  podman run -d -v /mysqldata:/var/lib/mysql:Z -e MYSQL_ROOT_PASSWORD=redhat mysql
+  437  podman ps
+  438  podman ps -a
+  439  podman rm -f hopeful_brown 
+  440  podman run  -v /mysqldata:/var/lib/mysql:Z -e MYSQL_ROOT_PASSWORD=redhat mysql
+  441  podman rm -f modest_snyder 
+  442  history
+
